@@ -4,11 +4,16 @@ import pygame
 from pygame.locals import *
 import time
 import random
+import os
 
 SIZE = 30
 BACKGROUND_COLOR = (110, 110, 5)
-SRC_DIAMOND = "C:/Users/Thinnd/Desktop/projects/diamond-game/assets/images/diamond_30.jpg"
-SRC_BLOCK = "C:/Users/Thinnd/Desktop/projects/diamond-game/assets/images/block_30.jpg"
+SRC_DIAMOND = os.path.abspath("./assets/images/diamond_30.jpg")
+SRC_BLOCK = os.path.abspath("./assets/images/block_30.jpg")
+SRC_BG = os.path.abspath("./assets/images/background.jpg")
+SRC_BG_MUSIC = os.path.abspath("./assets/videos/bg_music_1.mp3")
+SRC_CRASH = os.path.abspath("./assets/videos/crash.mp3")
+SRC_DING = os.path.abspath("./assets/videos/ding.mp3")
 
 class Diamond:
     def __init__(self, parent_screen):
@@ -91,14 +96,14 @@ class Game:
         self.diamond.draw()
 
     def play_background_music(self):
-        pygame.mixer.music.load('C:/Users/Thinnd/Desktop/projects/diamond-game/assets/files/bg_music_1.mp3')
+        pygame.mixer.music.load(SRC_BG_MUSIC)
         pygame.mixer.music.play(-1, 0)
 
     def play_sound(self, sound_name):
         if sound_name == "crash":
-            sound = pygame.mixer.Sound("C:/Users/Thinnd/Desktop/projects/diamond-game/assets/files/crash.mp3")
+            sound = pygame.mixer.Sound(SRC_CRASH)
         elif sound_name == 'ding':
-            sound = pygame.mixer.Sound("C:/Users/Thinnd/Desktop/projects/diamond-game/assets/files/ding.mp3")
+            sound = pygame.mixer.Sound(SRC_DING)
 
         pygame.mixer.Sound.play(sound)
         # pygame.mixer.music.stop()
@@ -116,7 +121,7 @@ class Game:
         return False
 
     def render_background(self):
-        bg = pygame.image.load("C:/Users/Thinnd/Desktop/projects/diamond-game/assets/images/background.jpg")
+        bg = pygame.image.load(SRC_BG)
         self.surface.blit(bg, (0,0))
 
     def play(self):
