@@ -83,8 +83,10 @@ class Game:
         font = pygame.font.SysFont('arial', 30)
         line1 = font.render(f"Hahahahaha... You lose! Your score is {self.snake.length}", True, (255, 255, 255))
         self.surface.blit(line1, (200, 300))
-        line2 = font.render("To play again press Enter.\nTo exit press Escape!", True, (255, 255, 255))
+        line2 = font.render("To play again press Enter!", True, (255, 255, 255))
         self.surface.blit(line2, (200, 350))
+        line3 = font.render("To exit press Escape!", True, (255, 255, 255))
+        self.surface.blit(line3, (200, 400))
         pygame.mixer.music.pause()
         pygame.display.flip()
 
